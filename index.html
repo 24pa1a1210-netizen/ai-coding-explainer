@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Coding Problem Explainer</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Load custom fonts similar to the React version -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Load Lucide Icons for vanilla JS -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <div class="layout-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <button class="new-chat-btn" id="newChatBtn">
+                <i data-lucide="plus"></i> New AI Explanation
+            </button>
+            <div style="margin-top: 1.5rem">
+                <input type="text" id="searchInput" placeholder="Search history..."
+                    style="width: 100%; padding: 0.6rem 1rem; border-radius: 0.5rem; border: 1px solid var(--border-light); background: var(--bg-input); color: var(--text-main); font-size: 0.9rem; outline: none;">
+            </div>
+            <div class="history-list">
+                <div
+                    style="padding: 0 0.5rem; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">
+                    Chat History
+                </div>
+                <!-- Chat history injected here dynamically -->
+                <div id="historyListContainer"></div>
+            </div>
+        </div>
+
+        <!-- Main Workspace -->
+        <div class="main-view">
+            <!-- Background AI Node SVG Effect -->
+            <div style="position: absolute; inset: 0; z-index: 0; opacity: 0.6; pointer-events: none; display: flex; justify-content: center; align-items: center;"
+                id="bgDiagram">
+                <svg class="ai-diagram-bg" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/24/svg">
+                    <path d="M400 300L250 150M400 300L550 150M400 300L250 450M400 300L550 450"
+                        stroke="rgba(138,43,226,0.15)" stroke-width="3" stroke-dasharray="5,5" class="animated-path" />
+                    <path
+                        d="M250 150L100 200M250 150L300 50M550 150L700 200M550 150L500 50M250 450L100 400M250 450L300 550M550 450L700 400M550 450L500 550"
+                        stroke="rgba(0,212,255,0.1)" stroke-width="2" />
+                    <circle cx="400" cy="300" r="30" fill="rgba(138,43,226,0.2)" />
+                    <circle cx="400" cy="300" r="15" fill="var(--accent-primary)" />
+                    <circle cx="250" cy="150" r="20" fill="rgba(0,212,255,0.2)" />
+                    <circle cx="250" cy="150" r="10" fill="var(--accent-secondary)" />
+                    <circle cx="550" cy="150" r="20" fill="rgba(0,212,255,0.2)" />
+                    <circle cx="550" cy="150" r="10" fill="var(--accent-secondary)" />
+                    <circle cx="250" cy="450" r="20" fill="rgba(0,212,255,0.2)" />
+                    <circle cx="250" cy="450" r="10" fill="var(--accent-secondary)" />
+                    <circle cx="550" cy="450" r="20" fill="rgba(0,212,255,0.2)" />
+                    <circle cx="550" cy="450" r="10" fill="var(--accent-secondary)" />
+                    <circle cx="100" cy="200" r="8" fill="rgba(255,255,255,0.2)" />
+                    <circle cx="300" cy="50" r="8" fill="rgba(255,255,255,0.2)" />
+                    <circle cx="700" cy="200" r="8" fill="rgba(255,255,255,0.2)" />
+                    <circle cx="500" cy="50" r="8" fill="rgba(255,255,255,0.2)" />
+                    <circle cx="100" cy="400" r="8" fill="rgba(255,255,255,0.2)" />
+                    <circle cx="300" cy="550" r="8" fill="rgba(255,255,255,0.2)" />
+                    <circle cx="700" cy="400" r="8" fill="rgba(255,255,255,0.2)" />
+                    <circle cx="500" cy="550" r="8" fill="rgba(255,255,255,0.2)" />
+                </svg>
+            </div>
+
+            <!-- Top right absolute widget -->
+            <div class="leetcode-edge-widget" id="leetcodeWidget" title="Start new chat">
+                <svg viewBox="0 0 24 24" width="28" height="28" xmlns="http://www.w3.org/24/svg"
+                    style="filter: drop-shadow(0px 0px 8px rgba(255, 161, 22, 0.4))">
+                    <path fill="#FFA116"
+                        d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.939 5.939 0 0 0 1.271 1.541l11.114 11.114c.54.54 1.414.54 1.954 0 .54-.54.54-1.415 0-1.954l-11.114-11.114a3.17 3.17 0 0 1-.689-.838 3.082 3.082 0 0 1-.225-.56c-.023-.082-.041-.167-.053-.255a3.111 3.111 0 0 1-.031-.264c-.005-.09-.01-.184 0-.276a3.158 3.158 0 0 1 .151-.715c.08-.22.18-.429.3-.62l3.854-4.126 5.406-5.788a1.374 1.374 0 0 0-.44-2.35 1.374 1.374 0 0 0-.916.038z" />
+                </svg>
+                <div class="pulse-indicator"></div>
+            </div>
+
+            <!-- Central Content Array Area -->
+            <div class="chat-scroll-area" id="chatScrollArea" style="position: relative; z-index: 1;">
+                <!-- Content injected here dynamically via JS -->
+            </div>
+
+            <!-- Bottom sticky text area -->
+            <div class="input-fixed-container" style="z-index: 10;">
+                <form class="input-box" id="chatForm">
+                    <textarea class="input-textarea" id="chatInput"
+                        placeholder="Ask a coding question (e.g. 'Trapping Rain Water logic') or paste a problem..."></textarea>
+                    <div class="input-controls">
+                        <div
+                            style="font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem;">
+                            <i data-lucide="sparkles"
+                                style="color: var(--accent-secondary); width: 14px; height: 14px;"></i> Connected to
+                            Gemini 2.5 JS API
+                        </div>
+                        <button type="submit" class="submit-btn" id="submitBtn" disabled>
+                            <i data-lucide="arrow-right"></i> Solve
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script loaded as an ES module to allow standard Google Auth -->
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

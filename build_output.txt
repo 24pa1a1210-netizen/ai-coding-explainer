@@ -1,0 +1,31 @@
+
+> ai-coding-explainer@0.0.0 build
+> vite build
+
+[36mvite v7.3.1 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32mΓ£ô[39m 3 modules transformed.
+Γ£ù Build failed in 97ms
+error during build:
+[vite:esbuild] Transform failed with 1 error:
+C:/Users/annap/OneDrive/Desktop/AI/ai-coding-explainer/src/App.jsx:134:30: ERROR: Syntax error "`"
+file: C:/Users/annap/OneDrive/Desktop/AI/ai-coding-explainer/src/App.jsx:134:30
+
+Syntax error "`"
+132 |            
+133 |            <div className="badge-row">
+134 |              <span className={\`badge badge-\${result.difficulty.toLowerCase()}\`}>
+    |                                ^
+135 |                <TrendingUp size={16} /> Difficulty: {result.difficulty}
+136 |              </span>
+
+    at failureErrorWithLog (C:\Users\annap\OneDrive\Desktop\AI\ai-coding-explainer\node_modules\esbuild\lib\main.js:1467:15)
+    at C:\Users\annap\OneDrive\Desktop\AI\ai-coding-explainer\node_modules\esbuild\lib\main.js:736:50
+    at responseCallbacks.<computed> (C:\Users\annap\OneDrive\Desktop\AI\ai-coding-explainer\node_modules\esbuild\lib\main.js:603:9)
+    at handleIncomingPacket (C:\Users\annap\OneDrive\Desktop\AI\ai-coding-explainer\node_modules\esbuild\lib\main.js:658:12)
+    at Socket.readFromStdout (C:\Users\annap\OneDrive\Desktop\AI\ai-coding-explainer\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:508:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)
