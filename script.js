@@ -2,7 +2,7 @@
 import { GoogleGenerativeAI } from 'https://esm.run/@google/generative-ai';
 
 // Initialize the exact same AI model you were using in the Express backend
-const genAI = new GoogleGenerativeAI("AIzaSyAoNE3KrdcC_pakIwhO_wQ9Gm81b7Trq5U");
+const genAI = new GoogleGenerativeAI("");
 const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
 // ======================== STATE ======================== //
@@ -389,3 +389,4 @@ chatForm.onsubmit = async (e) => {
 // Initialization run
 renderSidebar();
 renderMain();
+
